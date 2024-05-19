@@ -1,0 +1,45 @@
+WARNING 2024-05-15 16:18:05,018 log Not Found: /favicon.ico
+WARNING 2024-05-15 16:18:05,024 basehttp "GET /favicon.ico HTTP/1.1" 404 2956
+DEBUG 2024-05-15 16:33:53,447 views Inside Register
+WARNING 2024-05-16 16:29:25,530 log Not Found: /favicon.ico
+WARNING 2024-05-16 16:29:25,533 basehttp "GET /favicon.ico HTTP/1.1" 404 2956
+ERROR 2024-05-18 13:54:20,987 views Exception while listing orders: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]TCP Provider: The wait operation timed out.\r\n (258) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (258)')
+Traceback (most recent call last):
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\db\backends\base\base.py", line 275, in ensure_connection
+    self.connect()
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\mssql\base.py", line 368, in get_new_connection
+    conn = Database.connect(connstr, **args)
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]TCP Provider: The wait operation timed out.\r\n (258) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (258)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\GLens\FoodOrderingApp\kimchy\kimchi\views.py", line 162, in orders
+    with connection.cursor() as cursor:
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\db\backends\base\base.py", line 316, in cursor
+    return self._cursor()
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\mssql\base.py", line 261, in _cursor
+    conn = super()._cursor()
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\db\backends\base\base.py", line 292, in _cursor
+    self.ensure_connection()
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\db\backends\base\base.py", line 274, in ensure_connection
+    with self.wrap_database_errors:
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\db\backends\base\base.py", line 275, in ensure_connection
+    self.connect()
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Users\akash.selvaraj\Anaconda3\envs\FoodOrderingApp\lib\site-packages\mssql\base.py", line 368, in get_new_connection
+    conn = Database.connect(connstr, **args)
+django.db.utils.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]TCP Provider: The wait operation timed out.\r\n (258) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (258)')

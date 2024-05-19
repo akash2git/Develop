@@ -1,0 +1,2 @@
+WARNING 2024-05-18 14:38:43,434 log Not Found: /favicon.ico
+WARNING 2024-05-18 14:38:43,441 basehttp "GET /favicon.ico HTTP/1.1" 404 3134
