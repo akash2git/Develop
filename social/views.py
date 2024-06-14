@@ -3,8 +3,6 @@ from datetime import datetime
 import logging
 from django.views.decorators.csrf import csrf_exempt
 from django.core.validators import EmailValidator
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from django.views.decorators.http import require_POST
 import json
 from django.db.models import Q
@@ -12,7 +10,6 @@ from django.http import JsonResponse
 from .models import FriendRequest
 from datetime import timedelta
 from django.utils import timezone
-from django.db.models import Count
 from django.db import models
 
 
@@ -20,7 +17,6 @@ logger = logging.getLogger('kimchi_logger')
 
 
 @csrf_exempt
-# @api_view(['POST'])
 def login(request):
     final_json = {"status": False, "message": "Failed to login"}
     try:
@@ -43,7 +39,6 @@ def login(request):
     return JsonResponse(final_json)
 
 @csrf_exempt
-# @api_view(['POST'])
 def register(request):
     final_json = {"status": False, "message": "Failed to register"}
     try:
