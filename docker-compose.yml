@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: social_network
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: gunicorn myproject.wsgi:application --bind 0.0.0.0:7600
+    volumes:
+      - .:/app
+    ports:
+      - "7600:7600"
+    depends_on:
+      - db
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
