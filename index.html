@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-container">
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div id="responseMessage"></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const responseMessage = document.getElementById("responseMessage");
+
+    try {
+        const response = await fetch("http://localhost:8000/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            }),
+        });
+
+        const data = await response.json();
+
+        // Check the status from the response
+        if (data.status) {
+            // Assuming data.users is the user list from your backend
+            localStorage.setItem("userList", JSON.stringify(data.users));
+            window.location.href = "form_data.html";
+        } else {
+            responseMessage.textContent = `Error: ${data.message}`; // Error message
+            responseMessage.style.color = "red";
+        }
+    } catch (error) {
+        responseMessage.textContent = "An error occurred. Please try again."; // General error
+        responseMessage.style.color = "red";
+    }
+});
+
+    </script>
+</body>
+</html>
