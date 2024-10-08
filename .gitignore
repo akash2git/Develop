@@ -1,0 +1,10 @@
+*.pyc
+*.log
+.idea/
+__pycache__/
+.scannerwork/
+*.csv
+*.xlsx
+*.html
+*.exe
+*.enc

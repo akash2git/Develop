@@ -1,0 +1,6 @@
+LOG:
+    basepath: 'D:\RealTimeChat\'
+    file_size: 10000000
+    file_count: 5
+    log_level: DEBUG
+    service_name: BirthdayWish
