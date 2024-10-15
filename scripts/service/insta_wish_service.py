@@ -33,13 +33,14 @@ def upload(users: Optional[str] = Form(None),  # Accepting a list of users direc
 
 
 @router.post('/send-email')
-def send_email(photo: UploadFile = File(...),
+def send_email(senderEmail: Optional[str] = Form(None),
+                photo: UploadFile = File(...),
                 recipientEmail: Optional[str] = Form(None),
                 message: Optional[str] = Form(None)
                 ):
     response = {"status": False, "message": "Error while running service"}
     try:
-        response = send_email_data(photo, recipientEmail, message)
+        response = send_email_data(senderEmail, photo, recipientEmail, message)
     except Exception as e:
         logger.exception("Exception while running service: {}".format(e))
     return response

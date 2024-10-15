@@ -190,7 +190,7 @@ def upload_data(insta_id, text, image, video):
     return final_json
 
 
-def send_email_data(image, recipient_email, message):
+def send_email_data(cc_email, image, recipient_email, message):
     final_json = {
         "status": False,
         "message": "Failed to send email"
@@ -199,6 +199,7 @@ def send_email_data(image, recipient_email, message):
         msg = MIMEMultipart()
         msg['From'] = "akashselvaraj121@gmail.com"
         msg['To'] = recipient_email
+        msg['Cc'] = cc_email
         msg['Subject'] = "Birthday Wish"
 
         # Attach the body with HTML content

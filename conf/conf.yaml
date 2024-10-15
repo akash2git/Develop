@@ -1,5 +1,5 @@
 LOG:
-    basepath: 'D:\RealTimeChat\'
+    basepath: 'D:\BirthdayWish\Develop\'
     file_size: 10000000
     file_count: 5
     log_level: DEBUG
